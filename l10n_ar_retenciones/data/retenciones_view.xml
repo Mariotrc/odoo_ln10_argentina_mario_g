@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C), 2012, OpenERP - Team de Localización Argentina.
+ https://launchpad.net/~openerp-l10n-ar-localization
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<openerp>
+        <data>
+	        <act_window name="Retencion Documents"
+	                domain="[('partner_id', '=', active_id)]"
+	                res_model="account.retenciones"
+	                src_model="res.partner"
+	                id="act_retenciones_partner"/>
+
+                <record model="ir.ui.view" id="account_retenciones_form">
+                        <field name="name">account.retenciones.form</field>
+                        <field name="model">account.retenciones</field>
+                        <field name="arch" type="xml">
+                                <form string="Retencion Document">
+					<field name="name"/>
+					<field name="amount"/>
+					<field name="invoice_id"/>
+					<newline/>
+					<field name="partner_id"/>
+					<field name="type"/>
+					<newline/>
+					<field name="user_id"/>
+					<field name="company_id"/>
+					<notebook colspan="4">
+						<page string="Retencion information">
+
+							<field name="emission_date"/>
+
+						</page>
+						<page string="Vouchers">
+							<field name="voucher_ids" colspan="4" nolabel="1"/>
+						</page>
+						<page string="Notes">
+							<field name="note" colspan="4" nolabel="1"/>
+						</page>
+					</notebook>
+					<group col="8" colspan="4">
+						<field name="reception_date"/>
+						<field name="done_date"/>
+						<newline/>		
+						<field name="state"/>
+						<button name="button_validate" states="draft"       string="Validate"
+							type="object" icon="terp-camera_test"/>
+						<button name="button_clearing" states="valid"       string="Clearing"
+							type="object" icon="gtk-ok"/>
+						<button name="button_paid"     states="clearing"    string="Paid"
+							type="object" icon="gtk-convert"/>
+						<button name="button_rejected" states="clearing"    string="Rejected"
+							type="object" icon="gtk-convert"/>
+						<button name="button_cancel"   states="valid" string="Cancel"
+							type="object" icon="gtk-cancel" groups="account.group_account_manager"/>
+						<button name="button_draft"    states="cancel"      string="Set to Draft"
+							type="object" icon="gtk-convert" groups="account.group_account_manager"/>
+					</group>
+                                </form>
+                        </field>
+                </record>
+
+                <record model="ir.ui.view" id="account_retenciones_tree">
+                        <field name="name">account.retenciones.tree</field>
+                        <field name="model">account.retenciones</field>
+                        <field name="arch" type="xml">
+                                <tree string='Retencion Document'>
+
+          <field name="name"/>
+					<field name="partner_id"/>
+					<field name="invoice_id"/>
+					<field name="type"/>
+					<field name="amount"/>
+					<field name="state"/>
+                                </tree>
+                        </field>
+                </record>
+
+                <record model="ir.actions.act_window" id="account_action_form_retenciones">
+                        <field name="type">ir.actions.act_window</field>
+                        <field name="name">retencion Documents</field>
+                        <field name="res_model">account.retenciones</field>
+                        <field name="view_type">form</field>
+                        <field name="view_mode">tree,form</field>
+                </record>
+
+		<menuitem name="Retencion Documents"
+			parent="account.menu_finance_bank_and_cash"
+			id="retencion_document"
+			action="account_action_form_retenciones"/>
+
+	</data>
+</openerp>
+

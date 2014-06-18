@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"id","name","model_id/id","group_id/id","perm_write","perm_read","perm_create","perm_unlink"
+"access_account_retenciones_manager","retenciones_accountant","retenciones.model_account_retenciones","account.group_account_user","True","True","True","True"
+"access_account_retenciones_user","trasury_invoice","retenciones.model_account_retenciones","account.group_account_invoice","True","True","True",""
+"access_account_retenciones_report_manager","retenciones_payments","retenciones.model_account_retenciones","account_payment.group_account_payment","True","True","True",""

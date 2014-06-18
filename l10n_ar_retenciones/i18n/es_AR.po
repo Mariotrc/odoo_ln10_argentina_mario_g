@@ -1,0 +1,242 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* treasury
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.3\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-01-04 14:11+0000\n"
+"PO-Revision-Date: 2012-01-04 14:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: treasury
+#: field:account.voucher,treasury_ids:0
+msgid "Associated Treasuries"
+msgstr "Valores Asociados"
+
+#. module: treasury
+#: field:account.treasury,emission_date:0
+msgid "Emission Date"
+msgstr "Fecha de emisión"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Confirm"
+msgstr "Confirmado"
+
+#. module: treasury
+#: selection:account.treasury,type:0
+msgid "coupon"
+msgstr "cupón"
+
+#. module: treasury
+#: selection:account.treasury,state:0
+msgid "Clearing"
+msgstr "Resolviendo"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Treasury information"
+msgstr "Información del valor"
+
+#. module: treasury
+#: field:account.treasury,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: treasury
+#: selection:account.treasury,state:0
+msgid "Valid"
+msgstr "Valido"
+
+#. module: treasury
+#: help:account.treasury,third_party_partner:0
+msgid "Document coming from or endorsed to a third party partner"
+msgstr "Documento endosado a este partner"
+
+#. module: treasury
+#: field:account.treasury,third_party_partner:0
+msgid "3rd Party Partner"
+msgstr "Terceros"
+
+#. module: treasury
+#: help:account.treasury,company_id:0
+msgid "Company related to this treasury"
+msgstr "Valor relacionado a esta companía"
+
+#. module: treasury
+#: model:ir.actions.act_window,name:treasury.account_action_form_treasury
+#: model:ir.actions.act_window,name:treasury.act_treasury_partner
+#: model:ir.ui.menu,name:treasury.treasury_document
+msgid "Treasury Documents"
+msgstr "Valores"
+
+#. module: treasury
+#: selection:account.treasury,type:0
+msgid "check"
+msgstr "cheque"
+
+#. module: treasury
+#: help:account.treasury,partner_id:0
+msgid "Partner who made the pay with this document."
+msgstr "Quien realizó el pago con este documento"
+
+#. module: treasury
+#: field:account.treasury,company_id:0
+msgid "Company"
+msgstr "Companía"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Treasury Document"
+msgstr "Valores"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Vouchers"
+msgstr "Recibos"
+
+#. module: treasury
+#: view:account.treasury:0
+#: selection:account.treasury,state:0
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: treasury
+#: view:account.treasury:0
+#: selection:account.treasury,state:0
+msgid "Rejected"
+msgstr "Rechazado"
+
+#. module: treasury
+#: field:account.treasury,user_id:0
+msgid "User"
+msgstr "Usuario"
+
+#. module: treasury
+#: view:account.voucher:0
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Clearing"
+msgstr "Clearing"
+
+#. module: treasury
+#: field:account.treasury,reception_date:0
+msgid "Reception Date"
+msgstr "Fecha de recepción"
+
+#. module: treasury
+#: field:account.treasury,name:0
+msgid "Document ID"
+msgstr "ID"
+
+#. module: treasury
+#: view:account.treasury:0
+#: field:account.treasury,note:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Set to Draft"
+msgstr "A borrador"
+
+#. module: treasury
+#: field:account.treasury,voucher_ids:0
+msgid "Associated Vouchers"
+msgstr "Recivos asociados"
+
+#. module: treasury
+#: field:account.treasury,amount:0
+msgid "Amount"
+msgstr "Monto"
+
+#. module: treasury
+#: selection:account.treasury,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: treasury
+#: help:account.treasury,user_id:0
+msgid "User who receive this document."
+msgstr "Usuario quien recibió el valor."
+
+#. module: treasury
+#: view:account.voucher:0
+msgid "Treasuries"
+msgstr "Valores"
+
+#. module: treasury
+#: help:account.treasury,amount:0
+msgid "Value of the Treasure"
+msgstr "Monto del valor"
+
+#. module: treasury
+#: selection:account.treasury,state:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: treasury
+#: model:ir.model,name:treasury.model_account_voucher
+msgid "Accounting Voucher"
+msgstr "Recibo"
+
+#. module: treasury
+#: field:account.treasury,done_date:0
+msgid "Solved Date"
+msgstr "Fecha de resolución"
+
+#. module: treasury
+#: field:account.treasury,bank_target:0
+msgid "Target Bank"
+msgstr "Banco destino"
+
+#. module: treasury
+#: model:ir.model,name:treasury.model_payment_line
+msgid "payment.line"
+msgstr "payment.line"
+
+#. module: treasury
+#: field:account.treasury,bank_source:0
+msgid "Source Bank"
+msgstr "Banco de Origen"
+
+#. module: treasury
+#: sql_constraint:payment.line:0
+msgid "The payment line name must be unique!"
+msgstr "¡El nombre de la línea de pago debe ser única!"
+
+#. module: treasury
+#: view:account.treasury:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: treasury
+#: field:account.treasury,partner_id:0
+msgid "Partner"
+msgstr "Partner"
+
+#. module: treasury
+#: field:account.treasury,clearing_date:0
+msgid "Clearing Date"
+msgstr "Fecha de Clearing"
+
+#. module: treasury
+#: field:account.treasury,type:0
+msgid "Document Type"
+msgstr "Tipo de valor"
+
+#. module: treasury
+#: model:ir.model,name:treasury.model_account_treasury
+msgid "account.treasury"
+msgstr "account.treasury"
+
