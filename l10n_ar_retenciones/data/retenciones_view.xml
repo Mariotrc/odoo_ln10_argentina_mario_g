@@ -29,7 +29,7 @@
                         <field name="model">account.retenciones</field>
                         <field name="arch" type="xml">
                                 <form string="Retencion Document">
-					<field name="name"/>
+					
 					<field name="amount"/>
 					<field name="invoice_id"/>
 					<newline/>
