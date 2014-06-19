@@ -25,8 +25,7 @@ import time
 class retenciones_document (osv.osv):
 	_name = "account.retenciones"
 	_columns = {
-                'name' : fields.char('Document ID',size=64, select=1, 
-                                     readonly=True, states={'draft':[('readonly',False)]}), 
+                
                 'partner_id' : fields.many2one('res.partner','Partner', required=True,
                                      readonly=True,states={'draft':[('readonly',False)]}, 
                                      help="Partner who made the pay with this document."),
