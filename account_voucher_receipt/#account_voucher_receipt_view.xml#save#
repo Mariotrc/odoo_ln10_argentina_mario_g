@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<record model="ir.ui.view" id="receipt_tree_view">
+			<field name="name">account.voucher.receipt.tree</field>
+			<field name="model">account.voucher.receipt</field>
+			<field name="arch" type="xml"> 
+				<tree string="Receipts List" colors="blue:state == 'draft';gray:state == 'cancel'" >
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="receiptbook_id"/>
+                    <field name="partner_id"/>
+                    <field name="type" invisible="1"/>
+                    <field name="state"/>
+                </tree> 
+            </field>
+        </record>   
+        
+        <!-- Customer Receipt -->
+        <record model="ir.ui.view" id="receipt_customer_form_view">
+            <field name="name">account.voucher.receipt.customer.form</field>
+            <field name="model">account.voucher.receipt</field>
+            <field name="arch" type="xml"> 
+                <form string="Receipts List" version="7.0">
+                    <field name="receiptbook_sequence_type" invisible="1"/>
+                    <field name="has_vouchers" invisible="1"/>
+                    <field name="id" invisible="1"/>
+                    <header>
+                        <button name="new_payment_normal" states="draft" string="Add Payment" type="object" default_focus="1" class="oe_highlight"/>
+                        <button name="post_receipt" states="draft" string="Post" type="object" default_focus="1" class="oe_highlight"/>
+                        <button name="cancel_receipt" string="Cancel Receipt" states="draft,proforma,posted"/>
+                        <button name="action_cancel_draft" type="object" states="cancel" string="Set to Draft"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h1 attrs="{'invisible': [('name','=',False)]}">
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="partner_id" domain="[('customer','=',True)]" string="Customer" context="{'search_default_customer': 1}" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="receiptbook_id" widget="selection"  attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="manual_prefix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')]}"/>
+                                <field name="manual_sufix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')],'required':[('receiptbook_sequence_type','=','manual')]}"/>
+                                <field name="next_receipt_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('name','!=',False)]}"/>
+                                <field name="force_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="company_id" widget="selection" groups="base.group_multi_company" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                            </group>
+                            <field name="voucher_ids" attrs="{'readonly':[('id','=',False)]}" context="{'partner_id': partner_id, 'date': date, 'from_receipt': True,'default_receipt_id': id, 'form_view_ref':'account_voucher.view_vendor_receipt_form', 'tree_view_ref':'account_voucher.view_voucher_tree'}" colspan="4">
+                                <tree create="false" colors="blue:state == 'draft';gray:state == 'cancel';red:audit" string="Voucher Entries">
+                                    <field name="number"/>
+                                    <field name="reference"/>
+                                    <field name="journal_id" groups="account.group_account_user"/>
+                                    <field name="amount" sum="Total Amount"/>
+                                    <field name="audit" invisible="1"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field> 
+                        </group>              
+                    </sheet>
+                </form> 
+            </field>
+        </record>  
+
+        <!-- Supplier Receipt -->
+        <record model="ir.ui.view" id="receipt_supplier_form_view">
+            <field name="name">account.voucher.receipt.supplier.form</field>
+            <field name="model">account.voucher.receipt</field>
+            <field name="arch" type="xml"> 
+                <form string="Receipts List" version="7.0">
+                    <field name="receiptbook_sequence_type" invisible="1"/>
+                    <field name="has_vouchers" invisible="1"/>
+                    <field name="id" invisible="1"/>
+                    <header>
+                        <button name="new_payment_normal" states="draft" string="Add Payment" type="object" default_focus="1" class="oe_highlight"/>
+                        <button name="post_receipt" states="draft" string="Post" type="object" default_focus="1" class="oe_highlight"/>
+                        <button name="cancel_receipt" string="Cancel Receipt" states="draft,proforma,posted"/>
+                        <button name="action_cancel_draft" type="object" states="cancel" string="Set to Draft"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <h1 attrs="{'invisible': [('name','=',False)]}">
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="partner_id" domain="[('supplier','=',True)]" string="Supplier" context="{'search_default_supplier': 1}" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="receiptbook_id" widget="selection"  attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="manual_prefix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')]}"/>
+                                <field name="manual_sufix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')],'required':[('receiptbook_sequence_type','=','manual')]}"/>
+                                <field name="next_receipt_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('name','!=',False)]}"/>
+                                <field name="force_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                                <field name="company_id" widget="selection" groups="base.group_multi_company" attrs="{'readonly':[('has_vouchers','=',True)]}"/>
+                            </group>
+                            <field name="voucher_ids" attrs="{'readonly':[('id','=',False)]}" context="{'partner_id': partner_id, 'date': date, 'from_receipt': True,'default_receipt_id': id, 'form_view_ref':'account_voucher.view_vendor_payment_form', 'tree_view_ref':'account_voucher.view_voucher_tree'}" colspan="4">
+                                <tree create="false" colors="blue:state == 'draft';gray:state == 'cancel';red:audit" string="Voucher Entries">
+                                    <field name="number"/>
+                                    <field name="reference"/>
+                                    <field name="journal_id" groups="account.group_account_user"/>
+                                    <field name="amount" sum="Total Amount"/>
+                                    <field name="audit" invisible="1"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field> 
+                        </group>              
+                    </sheet>
+                </form> 
+            </field>
+        </record>   
+		
+<!-- 		<record model="ir.ui.view" id="receipt_validate_finish_form">
+			<field name="name">account.voucher.receipt.form</field>
+			<field name="model">account.voucher.receipt</field>
+            <field name="priority" eval="90"/>
+			<field name="arch" type="xml"> 
+				<form string="Receipts List" version="7.0">
+                    <field name="state" invisible="1"/>
+                    <field name="receiptbook_sequence_type" invisible="1"/>
+                    <h1 attrs="{'invisible': [('name','=',False)]}">
+                        <field name="name"/>
+                    </h1>                        
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="receiptbook_id" widget="selection" domain="[('type','=',type)]"/>
+                            <field name="manual_prefix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')]}"/>
+                            <field name="manual_sufix" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','manual'),('state','!=','draft')],'required':[('receiptbook_sequence_type','=','manual')]}"/>
+                            <field name="next_receipt_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('name','!=',False)]}"/>
+                            <field name="force_number" attrs="{'invisible':['|',('receiptbook_sequence_type','!=','automatic'),('state','!=','draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="date" />
+                            <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                        </group>
+                        <field name="voucher_ids" colspan="4"/>
+                    </group>
+                    <footer>
+                        <button name="post_receipt" states="draft" string="Post" type="object" default_focus="1" class="oe_highlight"/>
+                        or 
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>                        
+				</form>	
+			</field>
+	    </record>		 -->
+	  
+        <record id="receipt_filter_view" model="ir.ui.view">
+            <field name="name">account.voucher.receipt.select</field>
+            <field name="model">account.voucher.receipt</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <search string="Receipts">               
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>   
+	    	    	
+    <record model="ir.actions.act_window" id="payment_list_action">
+		<field name="name">Supplier Receipts</field>
+		<field name="res_model">account.voucher.receipt</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="receipt_filter_view"/>
+        <field name="context">{'type':'payment','default_type':'payment',}</field>
+        <field name="domain">[('type','=','payment')]</field>
+    </record>   
+
+    <record id="payment_list_action_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="payment_list_action"/>
+    </record>
+    <record id="payment_list_action_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="receipt_supplier_form_view"/>
+        <field name="act_window_id" ref="payment_list_action"/>
+    </record>   
+
+    <menuitem id="payment_menu" sequence="15" 
+        parent="account.menu_finance_payables" action="payment_list_action"/>   
+
+      <record model="ir.actions.act_window" id="receipts_list_action">
+        <field name="name">Customer Receipts</field>
+        <field name="res_model">account.voucher.receipt</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="receipt_filter_view"/>
+        <field name="view_id" ref=""/>
+        <field name="context">{'type':'receipt','default_type':'receipt',}</field>
+        <field name="domain">[('type','=','receipt')]</field>
+    </record>
+
+    <record id="receipts_list_action_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="receipts_list_action"/>
+    </record>
+    <record id="receipts_list_action_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="receipt_customer_form_view"/>
+        <field name="act_window_id" ref="receipts_list_action"/>
+    </record>          
+
+    <menuitem id="receipt_menu" sequence="15" 
+        parent="account.menu_finance_receivables" action="receipts_list_action"/>    
+                                            
+    </data>
+</openerp>                    
