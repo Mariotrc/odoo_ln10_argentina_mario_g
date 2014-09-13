@@ -4,7 +4,7 @@
 # Copyright (C) 2012 OpenERP - Team de Localización Argentina.
 # https://launchpad.net/~openerp-l10n-ar-localization
 #
-# This program isfree software: you can redistribute it and/or modify
+# This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
@@ -18,28 +18,17 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name' : 'Retenciones', 
-    'version' : '2.1',
-    'author':   'OpenERP - Team de Localización Argentina',
-    'category': 'Localization/Argentina',
-    'website':  'https://launchpad.net/~openerp-l10n-ar-localization',
-    'license':  'AGPL-3',
-    'description' : '''
-Modulo de configuracion y aviso de retencion a proovwedores
+import partner
+import product
+import conf_ret
+import voucher
+import retenciones
+import voucher_rg830_rel
+import account_journal
 
-    ''',
-    'depends' : ['base','account','account_payment'],
-    'init_xml' : [],
-    'demo_xml' : [],
-    'update_xml' : [
-        'data/retenciones_view.xml',
-        'data/vouchers_view.xml',
-        'security/retenciones_security.xml',
-        'data/conf_ret_view.xml',
-        'data/partner_view.xml',
-        
-    ],
-    'active': False 
-}
+
+
+import report
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

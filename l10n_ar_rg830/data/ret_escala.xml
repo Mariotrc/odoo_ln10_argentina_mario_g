@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="False">
+        <record model='ret.escala' >
+                <field name='desde'>0.0</field>
+                <field name='hasta'>2000</field>
+                <field name='monto'>0.0</field>
+                <field name='porcen_mas'>10</field>
+                <field name='exedente_de'>0.0</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>2000</field>
+                <field name='hasta'>4000</field>
+                <field name='monto'>200</field>
+                <field name='porcen_mas'>14</field>
+                <field name='exedente_de'>2000</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>4000</field>
+                <field name='hasta'>8000</field>
+                <field name='monto'>480</field>
+                <field name='porcen_mas'>18</field>
+                <field name='exedente_de'>4000</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>8000</field>
+                <field name='hasta'>14000</field>
+                <field name='monto'>1200</field>
+                <field name='porcen_mas'>22</field>
+                <field name='exedente_de'>8000</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>14000</field>
+                <field name='hasta'>24000</field>
+                <field name='monto'>2520</field>
+                <field name='porcen_mas'>26</field>
+                <field name='exedente_de'>14000</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>24000</field>
+                <field name='hasta'>40000</field>
+                <field name='monto'>5120</field>
+                <field name='porcen_mas'>28</field>
+                <field name='exedente_de'>24000</field>
+        </record> 
+        <record model='ret.escala' >
+                <field name='desde'>40000</field>
+                <field name='hasta'>1000000</field>
+                <field name='monto'>9600</field>
+                <field name='porcen_mas'>30</field>
+                <field name='exedente_de'>40000</field>
+        </record> 
+
+    </data>
+</openerp>

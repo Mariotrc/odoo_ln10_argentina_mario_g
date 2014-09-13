@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="False">
+        <record model='conf.ret' >
+                <field name='code'>78</field>
+                <field name='name'>Venta de bienes mueble</field>
+                <field name='descripcion'>Enajenación de bienes muebles y bienes de cambio</field>
+                <field name='impuesto'>ganancias</field>
+                <field name='neto'>12000</field>
+                <field name='porcentaje'>2.0</field>
+                <field name='porcentaje_no_ins'>10.0</field>
+                <field name='metodo'>porcentaje</field>
+                <field name='importe_min'>20.0</field>
+                <field name='importe_min_no_ins'>20.0</field>
+                <field name='default'>TRUE</field>
+        </record> 
+
+        <record model='conf.ret' >
+                <field name='code'>116</field>
+                <field name='name'>Profesionales liberales.</field>
+                <field name='descripcion'>Profesionales liberales, oficios, albacea, mandatario, gestor de negocio.</field>
+                <field name='impuesto'>ganancias</field>
+                <field name='neto'>1200</field>
+                <field name='porcentaje'>0</field>
+                <field name='porcentaje_no_ins'>28.0</field>
+                <field name='metodo'>tabla</field>
+                <field name='importe_min'>20.0</field>
+                <field name='importe_min_no_ins'>20.0</field>
+        </record> 
+
+        <record model='conf.ret' >
+                <field name='code'>95</field>
+                <field name='name'>Transporte y flete.</field>
+                <field name='descripcion'>Operaciones de transporte de carga nacional e internacional.</field>
+                <field name='impuesto'>ganancias</field>
+                <field name='neto'>6500</field>
+                <field name='porcentaje'>0.25</field>
+                <field name='porcentaje_no_ins'>28.0</field>
+                <field name='metodo'>porcentaje</field>
+                <field name='importe_min'>20.0</field>
+                <field name='importe_min_no_ins'>20.0</field>
+        </record> 
+
+        <record model='conf.ret' >
+                <field name='code'>30</field>
+                <field name='name'>Alquileres equipos.</field>
+                <field name='descripcion'>Alquileres o arrendamientos de bienes muebles.</field>
+                <field name='impuesto'>ganancias</field>
+                <field name='neto'>1200</field>
+                <field name='porcentaje'>6.0</field>
+                <field name='porcentaje_no_ins'>28.0</field>
+                <field name='metodo'>porcentaje</field>
+                <field name='importe_min'>20.0</field>
+                <field name='importe_min_no_ins'>20.0</field>
+        </record> 
+
+        <record model='conf.ret'>
+                <field name='code'>31</field>
+                <field name='name'>Alquileres inmuebles urbanos.</field>
+                <field name='descripcion'>Alquileres o arrendamientos de bienes inmuebles urbanos.</field>
+                <field name='impuesto'>ganancias</field>
+                <field name='neto'>1200</field>
+                <field name='porcentaje'>6.0</field>
+                <field name='porcentaje_no_ins'>28.0</field>
+                <field name='metodo'>porcentaje</field>
+                <field name='importe_min'>20.0</field>
+                <field name='importe_min_no_ins'>100.0</field>
+        </record> 
+    </data>
+</openerp>

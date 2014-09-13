@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<document filename="pedido.pdf">
+    <template pageSize="(21cm,29.7cm)"
+        title="Constancia de retencion"
+        author="Mario Calvar"
+        allowSplitting="0"
+        topMargin="0"
+	bottomMargin="0"
+	showBoundary="0"
+        >
+    <pageTemplate id="first">
+      <!-- 1 -->
+      <frame id="fecha_es"            x1="1.000cm" y1="25.500cm" width="10cm"  height="3cm"/>
+      <!-- 2 -->
+       <frame id="fecha"              x1="12.000cm" y1="25.500cm" width="6cm"  height="3cm"/>
+      <!-- 3 -->
+      <frame id="info"                x1="2.500cm" y1="24.500cm" width="18.5cm"  height="1.0cm"/>
+     
+      <!-- 4 -->
+      <frame id="partner_label"       x1="1.000cm"  y1="21.0cm" width="15cm"  height="3cm"/>
+      <!-- 5 -->
+      <frame id="partner"             x1="1cm" y1="10.00cm" width="9cm"  height="9cm"/>
+      <!-- 6 -->
+      <frame id="note"                x1="10cm"  y1="10.0cm" width="8cm" height="9cm"/>
+      <!-- 7 -->
+      <frame id="details"             x1="9.000cm"  y1="6.7cm"    width="12cm" height="2cm"/>
+      <!-- 8 -->
+      <frame id="subtotal"            x1="1.300cm"  y1="5.20cm"    width="2.0cm" height="2cm"/>
+      <frame id="iva_info"            x1="4.0cm" y1="5.35cm"    width="12.0cm"  height="2cm"/>
+      <frame id="total"               x1="17.000cm" y1="5.20cm"    width="2.0cm"  height="2cm"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+      <paraStyle name='big'
+          fontName='Helvetica'
+          fontSize='12'
+          spaceBefore='0'
+          />
+      <paraStyle name='body'
+          fontName='Helvetica'
+          fontSize='9'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0cm'
+          />
+           <paraStyle name='body-8'
+          fontName='Helvetica'
+          fontSize='8'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='-0.1cm'
+          />
+      <paraStyle name='body-large'
+          fontName='Helvetica'
+          fontSize='9'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0.2cm'
+          />
+      <paraStyle name='body-bold'
+          fontName='Helvetica-Bold'
+          fontSize='9'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0cm'
+          />
+      <paraStyle name='details'
+          fontName='Helvetica'
+          fontSize='9'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0cm'
+          />
+      <paraStyle name='tiny'
+          fontName='Helvetica'
+          fontSize='8'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0cm'
+          />
+      <paraStyle name='tiny-bold'
+          fontName='Helvetica-Bold'
+          fontSize='8'
+          leftIndent='0cm'
+          spaceAfter='0cm'
+          spaceBefore='0cm'
+          />
+      <paraStyle name='number'
+          fontName='Helvetica'
+          fontSize='9'
+          />
+          
+      <blockTableStyle id="Details">
+          <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+          <blockAlignment value="RIGHT"   start="0,0" stop="0,-1"/>
+          <blockAlignment value="LEFT"  start="1,0" stop="2,-1"/>
+          <blockAlignment value="RIGHT"  start="3,0" stop="-1,-1"/>
+         
+          
+	 
+	  
+      </blockTableStyle>
+      
+      <blockTableStyle id="Total">
+          <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+          <blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>          
+      </blockTableStyle>
+      
+      <blockTableStyle id="Datosiva">
+          <blockValign value="TOP" start="0,0" stop="0,-1"/>
+          <blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
+          <blockAlignment value="RIGHT" start="0,1" stop="2,-1"/>
+      </blockTableStyle>
+      
+      <blockTableStyle id="Datosiva2">
+          <blockValign value="TOP" start="0,0" stop="-1,-1"/>
+          <blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
+          <blockAlignment value="RIGHT" start="1,0" stop="2,-1"/>
+       </blockTableStyle>
+       
+  </stylesheet>
+  <story>
+   <!-- 1 -->
+    <para>[[ repeatIn(objects,'o') ]]</para>
+    <para style='body-bold'>[[ o.company_id.partner_id.name or '' ]] </para>
+    <para style='body-bold'>[[ o.company_id.partner_id.street or '' ]] [[ o.company_id.partner_id.city or '' ]] [[ o.company_id.partner_id.state_id.name or '' ]] </para>
+    <para style='body-bold'>[[ o.company_id.partner_id.responsability_id.name or '' ]]</para>
+    <para style='body-bold'>[[ o.company_id.partner_id.document_type_id.name or '']]: [[ o.company_id.partner_id.document_number or '']] </para>
+    
+
+    
+     
+     <nextFrame/>
+     <!-- 2-->
+     <para>Numero: [[ o.name or '' ]] </para>
+     <para>Fecha: [[ o.emission_date or '' ]] </para>
+     <nextFrame/>
+     <!-- 3 -->
+     <para style='big'> CONSTANCIA DE RETENCION DE IMPUESTO A LAS GANANCIAS RG 830 </para>
+     <nextFrame/>
+     <!-- 4 -->
+     <para>Datos del poveedor</para>
+     <para>Razón Social: [[ o.partner_id.name or '' ]] </para>
+     <para>Domicilio:    [[ o.partner_id.street or '' ]] [[ o.partner_id.city or '' ]] [[ o.partner_id.state_id.name or '' ]] </para>
+     <para>IVA:          [[ o.partner_id.responsability_id.name or '' ]] </para>
+     <para>[[ o.company_id.partner_id.document_type_id.name or '']]: [[ o.company_id.partner_id.document_number or '']] </para>
+     <nextFrame/>
+     <!-- 5 -->
+     <para>Concepto sujeto a retención: </para>
+     <para> Comprobante que origina la retención:</para>
+     <para>  </para>
+     <para>Pagos imputados sujetos a retención:  </para>
+     <para>Pagos a cuenta sujetos a retencion:  </para>
+     <para>Pagos acumulados en el mes:  </para>
+     <para>Minimo no imponible:  </para>
+     <para>Importe sujeto a retención:  </para>
+     
+     <para>Retenciones acumuladas en el mes:  </para>
+     <para>Importe de retención:  </para>
+     <nextFrame/>
+     <!-- 6 -->
+     <para  >[[ o.reten_gan.name or '' ]]  </para>
+     <para>[[ o.receipt_id.name ]]  </para>
+     <para alignment='RIGHT'>[[ o.actual_pay or '0,00' ]]  </para>
+     <para alignment='RIGHT'>0,00  </para>
+     <para alignment='RIGHT'>[[ o.pay_prev or '0,00' ]]  </para>
+     <para alignment='RIGHT'>[[ o.no_imputable or '0,00' ]]  </para>
+     <para alignment='RIGHT'>[[ o.total_imput or '0,00' ]]  </para>
+     <para alignment='RIGHT'>[[ o.ret_prev or '0,00' ]]  </para>
+     <para alignment='RIGHT'>[[ o.amount or '0,00' ]]  </para>
+     
+     <nextFrame/>
+     <!-- 7 -->
+     <para alignment='CENTER'>------------------------------------------</para>
+     <para alignment='CENTER'>Firma</para>
+     <nextFrame/>
+      <!-- 8 -->
+  
+     
+   </story>
+</document>

@@ -23,14 +23,14 @@
 <openerp>
     <data>
 
-        <record id="view_res_partner_form" model="ir.ui.view">
-            <field name="name">res.partner.form</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
+        <record id="view_product_product_form" model="ir.ui.view">
+            <field name="name">product.product_gan_form_view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
                 <data>
                    
-                    <field name="property_account_position" position="before">
+                    <field name="taxes_id" position="after">
                         <field name="reten_gan" widget="selection"/>
 
                     </field>
@@ -42,5 +42,4 @@
 
     </data>
 </openerp>
-<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
-     -->
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4 -->

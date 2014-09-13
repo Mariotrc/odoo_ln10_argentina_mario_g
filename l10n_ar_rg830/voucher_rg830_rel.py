@@ -20,23 +20,22 @@
 ##############################################################################
 from openerp.osv import fields, osv
 import re
-class conf_ret(osv.osv):
-    _name='conf.ret'
-    _description='Configuracion de retenciones'
+class voucher_rg830_rel(osv.osv):
+    _name='voucher.rg830.rel'
+    _description='Valores relacionados voucher-RG830'
     _columns={
-        'name': fields.char('Nombre', size=32, required=True),
-        'code': fields.char('Codigo', size=8, required=True),
-        'neto': fields.float('Neto Minimo Imputable',  required=True),
-        
-        'porcentaje': fields.float('Porcentaje',  required=True),
-        'importe_min' : fields.float('Importe Minimo',  required=True),
-        'impuesto': fields.selection([('ganancias','Ganancias'),('iva','IVA'),('inrgbrutos','Ingresos Brutos'),('rg1784','Seg.Social RG1784')],string='Impuesto',required=True), 
-    }
-    _sql_constraints = [('name','unique(name)', 'Not repeat name!'),
-                        ('code','unique(code)', 'Not repeat code!'),
-                        ]
-conf_ret()
-	     
+        'voucher_id': fields.many2one('account.voucher', 'Voucher', required=True),
+        'consept_rg830_id': fields.many2one('conf.ret', 'Consepto de retencion', required=True),
+        'neto': fields.float('Neto sujeto a retencion', required=True),
+        'journal_id' : fields.many2one('account.journal', 'Diario', required=False),
+        'partner_id':fields.many2one('res.partner', 'Partner', required=True),
+        'amount': fields.float('Amount' ),
+        'importe': fields.float('Importe de la retencion',required=False),
+        'periodo_id' : fields.many2one('account.period', 'Period', required=True),
+        'receipt_id' : fields.many2one('account.voucher.receipt', 'Orgden de pago', required=False, ),
+        'invoice_id':fields.many2one('account.invoice', 'Factura', required=False),
+        'residual_consept': fields.float('Neto residual de consepto' ),
+         }
 
-    
+voucher_rg830_rel()            
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

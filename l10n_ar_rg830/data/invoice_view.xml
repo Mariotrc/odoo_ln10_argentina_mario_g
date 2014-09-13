@@ -1,0 +1,32 @@
+<openerp>
+    <data>
+
+        <record id="view_invoice_partner_form" model="ir.ui.view">
+            <field name="name">invoice_partner_form_view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="journal_id" position="after">
+                        <field name="pay" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_invoice_partner_tree" model="ir.ui.view">
+            <field name="name">invoice_partner_tree_view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                 <data>
+                    <field name="origin" position="after">
+                        <field name="pay" />
+                    </field>
+                </data>
+            </field>
+        </record>
+ 
+
+    </data>
+</openerp>

@@ -18,10 +18,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp.osv import fields, osv
 
-import retenciones
-import voucher
-import conf_ret
-import partner
 
+class partner_ret(osv.osv):
+    _inherit = 'product.product'
+    _columns = {'reten_gan' : fields.many2one('conf.ret', 'Retencion Ganancias', required=False, select=True), }
+    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

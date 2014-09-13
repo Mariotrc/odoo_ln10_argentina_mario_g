@@ -30,11 +30,26 @@
                 <form string="Perfiles de Retenciones">
                     <field name='code'/>
                     <field name="name"/>
-                    <field name='neto'/>
-                    <field name='porcentaje'/>
-                    <field name='importe_min'/>
+                    <field name="descripcion"/>
+                    <field name='journal_id' widget='selection'/>
                     <field name='impuesto'/>
-                   
+                    <group colspan="2">
+                    <field name='neto'/>
+
+                    <field name='importe_min'/>
+               <group col="2" colspan="4">
+                    <separator string="Alicuota Responsable Inscripto" colspan="2"/>
+                    <field name='metodo'/>
+                    <field name='porcentaje' attrs="{'invisible' : [('metodo', '=', 'tabla')],'required':[('metodo','=','porcentaje')] }"/>
+
+                    
+                 </group>
+                    <field name='porcentaje_no_ins'  />
+                    <field name='importe_min_no_ins'/>
+                    </group>
+                    <field name='default'/>
+
+                    
                 </form>
             </field>
         </record>
@@ -48,8 +63,11 @@
                     <field name="name"/>
                     <field name='neto'/>
                     <field name='porcentaje'/>
+                    <field name='porcentaje_no_ins'/>
                     <field name='importe_min'/>
                     <field name='impuesto'/>
+                    <field name='journal_id' />
+                    <field name='default'/>
                 </tree>
             </field>
         </record>
@@ -63,6 +81,44 @@
         </record>
 
         <menuitem name="Retenciones" parent="base.menu_config" action="act_conf_ret" id="menu_action_conf_ret"/>
+
+        <record id="view_ret_escala_form" model="ir.ui.view">
+            <field name="name">ret.escala.form</field>
+            <field name="model">ret.escala</field>
+            <field name="arch" type="xml">
+                <form string="Escala de valores RG830">
+                    <field name='desde'/>
+                    <field name='hasta'/>
+                    <field name='monto'/>
+                    <field name='porcen_mas'/>
+                    <field name='exedente_de'/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ret_escala_tree" model="ir.ui.view">
+            <field name="name">ret.escala.tree</field>
+            <field name="model">ret.escala</field>
+            <field name="arch" type="xml">
+                <tree string="Escala de valores RG830">
+                    <field name='desde'/>
+                    <field name='hasta'/>
+                    <field name='monto'/>
+                    <field name='porcen_mas'/>
+                    <field name='exedente_de'/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_ret_escala">
+            <field name="name">Escala de valores RG830</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ret.escala</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Escalas RG830" parent="base.menu_config" action="act_ret_escala" id="menu_action_ret_escala"/>
 
     </data>
 </openerp>

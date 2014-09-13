@@ -1,0 +1,8 @@
+Modulo básico de cartera.
+
+La funcionalidad es sencilla, y en este momento tiene como objetivo el llevar un registro de los documentos de tesorería (cheques, contado, transferencias, ...).
+
+Este módulo es útil para la gestión de cartera (cobros y pagos), desde el momento que se recibe el documento hasta que se cobra / paga.
+
+El módulo de tesorería está vinculado a los bancos y a los partners. Uno puede visualizar el estado de los diversos documentos desde el menú de gestión financiera o directamente desde la ficha del partner en sí.
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="account_retenciones" model="account.retenciones" name="account.retenciones" rml="l10n_ar_rg830/report/ret_report.rml" string="Retencion" header="False"/>
+    </data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- tipo de secuencia -->
+        <record model="ir.sequence.type" id="secuencia_type_reten_gan">
+            <field name="name">Secuencia_reten_gan</field>
+            <field name="code">retencion-ganacias</field>
+        </record>
+
+        <!-- Secuencia -->
+        <record model="ir.sequence" id="secuencia__reten_gan">
+            <field name="name">Secuencia_reten_gan</field>
+            <field name="code">retencion-ganacias</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</openerp>

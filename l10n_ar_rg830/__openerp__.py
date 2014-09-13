@@ -4,7 +4,7 @@
 # Copyright (C) 2012 OpenERP - Team de Localización Argentina.
 # https://launchpad.net/~openerp-l10n-ar-localization
 #
-# This program is free software: you can redistribute it and/or modify
+# This program isfree software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
@@ -18,11 +18,32 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.osv import fields, osv, orm
-import re
+{
+    'name' : 'Retenciones Ganancias RG 830', 
+    'version' : '2.1',
+    'author':   'OpenERP - Team de Localización Argentina',
+    'category': 'Localization/Argentina',
+    'website':  'https://launchpad.net/~openerp-l10n-ar-localization',
+    'license':  'AGPL-3',
+    'description' : '''
 
-class partner_ret(osv.osv):
-    _inherit = 'res.partner'
-    _columns = {'reten_gan' : fields.many2one('conf.ret', 'Retencion Ganancias', required=False, select=True), }
-    
+    ''',
+    'depends' : ['base','account','account_payment', 'account_voucher_receipt'],
+    'init_xml' : ['data/secuencia.xml',],
+    'demo_xml' : [],
+    'update_xml' : [
+        'data/retenciones_view.xml',
+        'data/vouchers_view.xml',
+        'security/retenciones_security.xml',
+        'data/conf_ret_view.xml',
+        'data/partner_view.xml',
+        'data/product_view.xml',
+        'report/ret_report.xml',
+        'data/conf_ret.xml',
+        'data/ret_escala.xml',
+        'data/invoice_view.xml',
+        
+    ],
+    'active': False 
+}
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

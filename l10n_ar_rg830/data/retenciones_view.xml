@@ -28,35 +28,9 @@
                         <field name="name">account.retenciones.form</field>
                         <field name="model">account.retenciones</field>
                         <field name="arch" type="xml">
-                                <form string="Retencion Document">
-					
-					<field name="amount"/>
-					<field name="invoice_id"/>
-					<newline/>
-					<field name="partner_id"/>
-					<field name="type"/>
-					<newline/>
-					<field name="user_id"/>
-					<field name="company_id"/>
-					<notebook colspan="4">
-						<page string="Retencion information">
-
-							<field name="emission_date"/>
-
-						</page>
-						<page string="Vouchers">
-							<field name="voucher_ids" colspan="4" nolabel="1"/>
-						</page>
-						<page string="Notes">
-							<field name="note" colspan="4" nolabel="1"/>
-						</page>
-					</notebook>
-					<group col="8" colspan="4">
-						<field name="reception_date"/>
-						<field name="done_date"/>
-						<newline/>		
-						<field name="state"/>
-						<button name="button_validate" states="draft"       string="Validate"
+                                <form string="Retencion Document" version="7.0">
+                                <header>
+                                  <button name="button_validate" states="draft"       string="Validate"
 							type="object" icon="terp-camera_test"/>
 						<button name="button_clearing" states="valid"       string="Clearing"
 							type="object" icon="gtk-ok"/>
@@ -68,7 +42,58 @@
 							type="object" icon="gtk-cancel" groups="account.group_account_manager"/>
 						<button name="button_draft"    states="cancel"      string="Set to Draft"
 							type="object" icon="gtk-convert" groups="account.group_account_manager"/>
+						<button name="retencion_print" string="Imprimir" type="object" attrs="{'invisible':[('state','in',('cancel', 'open','draft' ))]}" icon="gtk-print"/>
+				        <field name="state" widget="statusbar"/>
+                                </header>
+                                <sheet string="Retencion">
+                                <div class="oe_title">
+                                  <h1 attrs="{'invisible': [('name','=',False)]}">
+					<field name="name" />
+			          </h1>
+			        </div>
+			        <group>
+			              <group>
+					<field name="type" on_change="onchange_type(type, partner_id, context)" class="oe_inline"/>
+					<field name="partner_id" on_change="onchange_partner(partner_id,  reten_gan, type, emission_date, company_id, context)" class="oe_inline"/>
+					<field name="amount"/>
 					</group>
+					<group>
+					<field name="reten_gan" on_change= "onchange_reten_gan(reten_gan, partner_id, amount, type, emission_date, company_id, context)" class="oe_inline"/>
+					<field name="user_id"/>
+					<field name="company_id"/>
+					<field name="receipt_id"/>
+					<field name="periodo_id" />
+					</group>
+				</group>
+					
+					
+					<group col="8" colspan="4">
+						<field name="reception_date"/>
+						<field name="done_date"/>
+								
+						
+					        <field name="emission_date"/>
+
+					</group>
+					<notebook colspan="4">
+						<page string="Retencion information">
+                                                   <field name="pay_prev" />
+                                                   <field name="actual_pay" />
+                                                   <newline/>
+                                                   <field name="total_imput" />
+                                                   <field name="ret_prev" />
+                                                   <field name="no_imputable" />
+							
+						</page>
+						<page string="Vouchers">
+							<field name="voucher_ids" colspan="4" nolabel="1"/>
+						</page>
+						<page string="Notes">
+							<field name="note" colspan="4" nolabel="1"/>
+						</page>
+					</notebook>
+					
+				   </sheet>
                                 </form>
                         </field>
                 </record>
@@ -79,11 +104,12 @@
                         <field name="arch" type="xml">
                                 <tree string='Retencion Document'>
 
-          <field name="name"/>
+                                        <field name="name"/>
 					<field name="partner_id"/>
-					<field name="invoice_id"/>
+					
 					<field name="type"/>
 					<field name="amount"/>
+					<field name="reten_gan"/>
 					<field name="state"/>
                                 </tree>
                         </field>
